@@ -29,10 +29,6 @@ body {
     color: rgb(255,255,255) !important;
 }
 
-.bg-light-op {
-    background-color: rgba(255,255,255,1) !important;
-}
-
 .text-gold {
     color: rgb(255,250,0);
 }
