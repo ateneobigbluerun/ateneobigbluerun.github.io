@@ -1,0 +1,65 @@
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url('res/bac.jpg');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-teal {
+    color: rgb(30,48,80) !important;
+}
+
+.btn-teal {
+    background-color: rgb(30,48,80) !important;
+    color: rgb(255,255,255) !important;
+}
+
+.text-gold {
+    color: rgb(255,250,0);
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.jump {
+    animation: jump 0.5s ease;
+}
+
+@media (max-width: 768px) {
+    .center {
+        width: 100%;
+    }
+
+    #btnDraw {
+        display: block;
+        margin: auto; 
+    }
+
+    .result {
+        text-align: center;
+    }
+}
