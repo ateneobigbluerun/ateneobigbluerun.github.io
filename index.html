@@ -19,21 +19,25 @@
     
     <div class="container-fluid">
         <div class="my-3">
-            <div class="mb-3">
-                <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#namelist">
-                    Settings
-                </button>
+            <div class="row">
+                <div class="col mb-3">
+                    <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#namelist">
+                        Settings
+                    </button>
+                </div>
+                <div class="col mb-3">
+                    <button class="btn btn-outline-light btn-lg rounded center py-1 px-4 me-0" id="btnDraw">
+                        <img src="res/die.png" height="100">
+                    </button>
+                </div>
             </div>
+           
 
             <div class="mb-5">
                 <div class="text-light text-center h1 fw-bold">Category: <span id="categoryText">5k</span></div>
             </div>
             
-            <div>
-                <button class="btn btn-outline-light btn-lg rounded center py-1 px-4" id="btnDraw">
-                    <img src="res/die.png" height="100">
-                </button>
-            </div>
+           
         </div>
 
         <!-- offcanvas settings -->
@@ -69,12 +73,11 @@
 
         <div>
            
-            <div class="result text-center text-gold h1 fw-bold mt-5" id="result"></div>
+            <div class="result text-center text-teal h1 fw-bold mt-5" id="result"></div>
          
-        
-            
             <img id="gifImage" src="res/draw.gif" class="center d-none">
             <img id="congrats" src="res/congrats.gif" class="center d-none mt-5" width="400px">    
+            <audio id="rollSound" src="res/sound.mp3"></audio>
         </div>
     
     </div>
@@ -88,7 +91,7 @@
         $(document).ready(function() {
 
             $('#btnDraw').on('click', function() {
-               
+
                 var names = $('#names').val().split('\n').map(function(name) {
                     return name.trim();
                 }).filter(function(name) {
@@ -103,6 +106,10 @@
                 $result.text('');
 
                 if (names.length > 0) {
+                    
+                    var rollSound = document.getElementById('rollSound');
+                    rollSound.play();
+
                     var randomIndex = Math.floor(Math.random() * names.length);
                     var randomName = names[randomIndex];
 
@@ -112,7 +119,7 @@
                     setTimeout(function() {
                         $gifImage.addClass('d-none');
 
-                        $result.text(randomName);
+                        $result.html("<div class='col-12 col-md-6 center bg-light-op rounded p-4 shadow'>" + randomName + "</div>");
                         $result.addClass('jump');
                         
                         $congrats.removeClass('d-none');
@@ -124,12 +131,12 @@
                         setTimeout(function() {
                             $congrats.addClass('d-none');
                             $result.text('');
-                        }, 7000);
+                        }, 6000);
 
-                    }, 4000);
+                    }, 5000);
 
                 } else {
-                    $result.text('Please enter some names.');
+                    $result.html("<div class='col-12 col-md-6 center bg-light-op rounded p-4 shadow'>Please enter some names..</div>");
                 }
             });
         });
